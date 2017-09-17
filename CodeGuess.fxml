@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="541.0" prefWidth="481.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CodeGuessController">
+   <children>
+      <TextField fx:id="guessInput" alignment="CENTER" layoutX="87.0" layoutY="121.0" prefHeight="52.0" prefWidth="308.0" promptText="Enter Your Guess">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </TextField>
+      <Text layoutX="86.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guess the Code!" textAlignment="CENTER">
+         <font>
+            <Font size="43.0" />
+         </font>
+         <fill>
+            <RadialGradient centerX="0.4722222222222222" centerY="0.5476190476190477" cycleMethod="REFLECT" focusAngle="157.17" focusDistance="-0.06976744186046513" radius="0.33720930232558133">
+               <stops>
+                  <Stop color="#00cbff" />
+                  <Stop color="BLACK" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </fill>
+      </Text>
+      <Text layoutX="78.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Digit 1:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="78.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Digit 2:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="78.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Digit 3:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="78.0" layoutY="442.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Digit 4:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Button fx:id="guessButton" layoutX="87.0" layoutY="201.0" mnemonicParsing="false" onMouseClicked="#checkGuess" prefHeight="44.0" prefWidth="132.0" text="Submit Guess" />
+      <Text layoutX="275.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lives:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="numLives" layoutX="329.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <GridPane fx:id="checkPane" layoutX="133.0" layoutY="293.0" prefHeight="164.0" prefWidth="100.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="42.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Circle fx:id="charIndicator1" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="charIndicator2" radius="12.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="1" />
+            <Circle fx:id="charIndicator3" radius="12.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="2" />
+            <Circle fx:id="charIndicator4" radius="12.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

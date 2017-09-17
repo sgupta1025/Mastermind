@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="354.0" prefWidth="385.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CodeEnterController">
+   <children>
+      <TextField fx:id="enteredCode" alignment="CENTER" layoutX="20.0" layoutY="174.0" prefHeight="56.0" prefWidth="345.0" promptText="Enter a 4 digit code">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </TextField>
+      <Button fx:id="submitButton" layoutX="65.0" layoutY="264.0" mnemonicParsing="false" onMouseClicked="#submitCode" prefHeight="51.0" prefWidth="256.0" text="Submit Code">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
+      <Text layoutX="21.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your code" textAlignment="CENTER" wrappingWidth="345.0">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="-25.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MASTERMIND" textAlignment="CENTER" wrappingWidth="435.13671875">
+         <font>
+            <Font size="50.0" />
+         </font>
+         <fill>
+            <RadialGradient centerX="0.5" centerY="0.4571428571428571" radius="0.6627906976744184">
+               <stops>
+                  <Stop color="RED" />
+                  <Stop color="BLACK" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </fill>
+      </Text>
+   </children>
+</AnchorPane>
