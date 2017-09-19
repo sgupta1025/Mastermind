@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutX="90.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YOU WON!!!!">
+      <ImageView fitHeight="400.0" fitWidth="600.0">
+         <image>
+            <Image url="@../../../Pictures/giphy.gif" />
+         </image>
+      </ImageView>
+      <Text layoutX="53.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YOU WIN!">
          <font>
-            <Font size="72.0" />
+            <Font name="Eras Bold ITC" size="96.0" />
          </font>
+         <fill>
+            <RadialGradient centerX="0.5" centerY="0.5" cycleMethod="REFLECT" radius="0.9883720930232558">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="#797979" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </fill>
       </Text>
    </children>
 </AnchorPane>
