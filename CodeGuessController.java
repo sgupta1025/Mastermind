@@ -42,6 +42,22 @@ public class CodeGuessController implements Initializable {
 	//Sets the number of lives on the GUI equal to a variable that can be decremented and checked
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		guessInput.setOnKeyPressed(new EventHandler<KeyEvent>()
+	    {
+	        @Override
+	        public void handle(KeyEvent ke)
+	        {
+	            if (ke.getCode().equals(KeyCode.ENTER))
+	            {
+	                try {
+						checkGuess();
+					} catch (URISyntaxException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	            }
+	        }
+	    });
 		numLives.setText(String.valueOf(numberOfLives));
 		guessInput.lengthProperty().addListener(new ChangeListener<Number>() {
 
