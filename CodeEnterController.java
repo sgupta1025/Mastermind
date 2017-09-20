@@ -26,9 +26,26 @@ public class CodeEnterController implements Initializable {
 	@FXML
 	AnchorPane anchorPane = new AnchorPane();
 	
-	//Limits the amount of chars entered for the Dialog Box for Guess
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		enteredCode.setOnKeyPressed(new EventHandler<KeyEvent>()
+	    {
+	        @Override
+	        public void handle(KeyEvent ke)
+	        {
+	            if (ke.getCode().equals(KeyCode.ENTER))
+	            {
+	                try {
+						passCheck();
+					} catch (URISyntaxException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	            }
+	        }
+	    });
+		
+		//Limits the amount of chars entered for the Dialog Box for Guess
 		enteredCode.lengthProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2)
