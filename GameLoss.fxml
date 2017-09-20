@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutX="90.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YOU LOST!!">
+      <ImageView fitHeight="400.0" fitWidth="600.0">
+         <image>
+            <Image url="@../../../Pictures/giphy%20(1).gif" />
+         </image>
+      </ImageView>
+      <Text layoutX="36.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GAME OVER" textAlignment="CENTER" wrappingWidth="527.94921875">
          <font>
-            <Font size="72.0" />
+            <Font name="Eras Bold ITC" size="72.0" />
          </font>
+         <fill>
+            <RadialGradient centerX="0.5" centerY="0.49523809523809526" cycleMethod="REFLECT" radius="0.5">
+               <stops>
+                  <Stop color="#ff8c00" />
+                  <Stop color="#b20000" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </fill>
       </Text>
    </children>
 </AnchorPane>

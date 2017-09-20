@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
@@ -21,7 +20,10 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+//Initialize the Controller for the Guess
 public class CodeGuessController implements Initializable {
+	
+	//Initializes variables to be manipulated in within the Controller
 	@FXML
 	TextField guessInput = new TextField();
 	@FXML
@@ -37,23 +39,23 @@ public class CodeGuessController implements Initializable {
 	Circle charIndicator3 = new Circle();
 	@FXML
 	Circle charIndicator4 = new Circle();
+	//Sets the number of lives on the GUI equal to a variable that can be decremented and checked
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		numLives.setText(String.valueOf(numberOfLives));
 		guessInput.lengthProperty().addListener(new ChangeListener<Number>() {
 
+			//Limits the amount of chars entered for the Dialog Box for Guess
 			@Override
 			public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-				
 				if (guessInput.getText().length() > 4) {
 					String s = guessInput.getText().substring(0, 4);
 	                guessInput.setText(s);
-
-				}
-				
+				}	
 			}
-			
 		});
+		
+		//Checks to make sure the input is only numerical values
 		guessInput.textProperty().addListener(new ChangeListener<String>() {
 	        @Override
 	        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -69,25 +71,30 @@ public class CodeGuessController implements Initializable {
 	 * @param event
 	 * @throws IOException
 	 */
+	//Reads the "code.txt" file and sets a String to the contents of the file
 	@FXML
 	public void checkGuess(Event event) throws IOException{
 		FileReader reader = new FileReader("code.txt");
 		BufferedReader bufferedReader = new BufferedReader(reader);
 		String code = bufferedReader.readLine();
 		bufferedReader.close();
-		//String fixedCode = code.replace("\n", "");
+		
+		//Deletes the file code is stored in and proceeds to the victory screen
 		if(guessInput.getText().equals(code)){
 			Stage stage =(Stage)guessButton.getScene().getWindow();
-			Scene newScene = new Scene(FXMLLoader.load(getClass().getResource("GameWin.fxml")));
+			Scene newScene = new Scene(FXMLLoader.load(getClass().getResource("/GameWin.fxml")));
 			stage.setScene(newScene);
 			File file = new File("code.txt");
 			file.delete();
 		}
+		
+		//If the code entered was not completely correct
 		else
 		{
+			//Sets a String equal to input to be compared to code
 			String enteredCode = guessInput.getText();
-			
-			for (int i = 0; i < code.length(); i++) {
+			//If any char in guess matches position and char in code
+			for (int i = 0; i < enteredCode.length(); i++) {
 				if(code.charAt(i) == enteredCode.charAt(i)){
 					switch (i) {
 					case 0:
@@ -104,6 +111,8 @@ public class CodeGuessController implements Initializable {
 						break;
 					}
 				}
+				
+				//If any char in guess matches a char in code, but isn't in the correct position
 				else if (containsChar(enteredCode, code.charAt(i))) {
 					switch (i) {
 					case 0:
@@ -120,6 +129,8 @@ public class CodeGuessController implements Initializable {
 						break;
 					}
 				}
+				
+				//If any char in guess does not match any of the chars in code
 				else{
 					switch (i) {
 					case 0:
@@ -136,27 +147,25 @@ public class CodeGuessController implements Initializable {
 						break;
 					}
 				}
-				//decrement lives
-				
 			}
+			//Decrement Lives
 			numberOfLives--;
 			numLives.setText(String.valueOf(numberOfLives));
+			//Ends the game and deletes the file out of lives
 			if(numberOfLives == 0){
 				Stage stage =(Stage)guessButton.getScene().getWindow();
-				Scene newScene = new Scene(FXMLLoader.load(getClass().getResource("GameLoss.fxml")));
+				Scene newScene = new Scene(FXMLLoader.load(getClass().getResource("/GameLoss.fxml")));
 				stage.setScene(newScene);
 				File file = new File("code.txt");
 				file.delete();
 			}
-		}
-		
+		}	
 	}
+	//Searches the guess to check if it contains any chars that code has
 	public boolean containsChar(String s, char search) {
 	    if (s.length() == 0)
 	        return false;
 	    else
 	        return s.charAt(0) == search || containsChar(s.substring(1), search);
 	}
-
-
 }
