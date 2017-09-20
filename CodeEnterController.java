@@ -36,7 +36,7 @@ public class CodeEnterController implements Initializable {
 	            if (ke.getCode().equals(KeyCode.ENTER))
 	            {
 	                try {
-						passCheck();
+						submitCode();
 					} catch (URISyntaxException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
