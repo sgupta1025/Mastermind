@@ -9,12 +9,15 @@ import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
@@ -61,6 +64,24 @@ public class CodeGuessController implements Initializable {
 	        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 	            if (!newValue.matches("\\d*")) {
 	                guessInput.setText(newValue.replaceAll("[^\\d]", ""));
+	            }
+	        }
+	    });
+		
+		//Checks for the pressing of the Enter key and receives input after it's pressed
+		guessInput.setOnKeyPressed(new EventHandler<KeyEvent>()
+	    {
+	        @Override
+	        public void handle(KeyEvent ke)
+	        {
+	            if (ke.getCode().equals(KeyCode.ENTER))
+	            {
+	                try {
+						checkGuess(ke);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 	            }
 	        }
 	    });
