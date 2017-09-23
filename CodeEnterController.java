@@ -7,12 +7,15 @@ import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -56,6 +59,22 @@ public class CodeEnterController implements Initializable {
 				}
 			}
 		});
+		
+		//Checks for the pressing of the Enter key and receives input after it's pressed
+		enteredCode.setOnKeyPressed(new EventHandler<KeyEvent>()
+	    {
+	        public void handle(KeyEvent ke)
+	        {
+	            if (ke.getCode().equals(KeyCode.ENTER))
+	            {
+	                try {
+						submitCode(ke);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+	            }
+	        }
+	    });
 		
 		//Checks to make sure the input is only numerical values
 		enteredCode.textProperty().addListener(new ChangeListener<String>() {
